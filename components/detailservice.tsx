@@ -35,12 +35,12 @@ function classNames(...classes: any) {
 }
 
 export default function DetailComponent() {
-    const handleShow = () => {
-        setShow(!show)
-    }
     const [selectedColor, setSelectedColor] = useState(product.colors[0])
     const [selectedSize, setSelectedSize] = useState(product.sizes[2])
     const [show, setShow]: any = useContext(ModalDetailContext);
+    const handleShow = () => {
+        setShow(!show)
+    }
     return (
         <Transition.Root show={show} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={handleShow}>
