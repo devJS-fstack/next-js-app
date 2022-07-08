@@ -1,7 +1,7 @@
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close'
 import {
-    Snackbar, IconButton
+    Snackbar, IconButton, Alert
 } from '@mui/material'
 
 interface SnackbarProps {
@@ -9,18 +9,34 @@ interface SnackbarProps {
     autoHideDuration: number;
     onClose: () => void;
     message: string;
-    action: any
 }
 
+const styles = {
+    snackbarStyleViaContentProps: {
+        backgroundColor: "orange"
+    },
+    snackbarStyleViaNestedContent: {
+        backgroundColor: "lightgreen",
+        color: "black"
+    }
+};
+
 export default function SnackbarComponent(props: SnackbarProps) {
-    const { open, autoHideDuration, onClose, message, action } = props
+    const { open, autoHideDuration, onClose, message } = props
     return (
+
         <Snackbar
             open={open}
             autoHideDuration={autoHideDuration}
             onClose={onClose}
-            message={message}
-            action={action}
-        />
+            anchorOrigin={{
+                vertical: "top",
+                horizontal: "center"
+            }}
+        >
+            <Alert onClose={onClose} severity="error" sx={{ width: '100%' }}>
+                {message}
+            </Alert>
+        </Snackbar>
     )
 }

@@ -35,12 +35,13 @@ export function SimpleDialog(props: SimpleDialogProps) {
     }
     const handleCloseFormDialog = (value: string) => {
         setOpenFormDialog(false)
-        onClose(value)
     }
     const handleListItemClick = (value: string) => {
-        onClose(value)
         if (value == "addAccount") {
             setOpenFormDialog(true)
+            onClose(selectedValue)
+        } else {
+            onClose(value)
         }
     }
 
@@ -87,20 +88,26 @@ export function SimpleDialog(props: SimpleDialogProps) {
 
 export function SimpleFormDialog(props: SimpleFormDialog) {
     const { openFormDialog, handleFormDialog } = props
+    let message = useRef("Email is already exists!")
     const [email, setEmail] = useState('')
     const [openSnackbar, setOpenSnackbar] = useState(false)
     const handleAddAccount = (value: string) => {
-        const isExist = emails.includes(value)
-        if (!isExist) {
-            emails.push(value)
-            handleFormDialog(value)
-            setEmail('')
-        } else {
+        if (value === "") {
             setOpenSnackbar(true)
+            message.current = "Please enter the email!"
+        }
+        else {
+            message.current = "Email is already exists!"
+            const isExist = emails.includes(value)
+            if (!isExist) {
+                emails.push(value)
+                handleFormDialog(value)
+                setEmail('')
+            } else {
+                setOpenSnackbar(true)
+            }
         }
     }
-
-
     const handleInput = (value: string) => {
         setEmail(value)
     }
@@ -113,24 +120,8 @@ export function SimpleFormDialog(props: SimpleFormDialog) {
         setOpenSnackbar(false)
     }
 
-    const action = (
-        <Fragment>
-            <Button color="secondary" size="small" onClick={handleCloseSnackbar}>
-                UNDO
-            </Button>
-            <IconButton
-                size="small"
-                aria-label="close"
-                color="inherit"
-                onClick={handleCloseSnackbar}
-            >
-                <CloseIcon fontSize="small" />
-            </IconButton>
-        </Fragment>
-    );
-
     return (
-        <>
+        <div>
             <Dialog open={openFormDialog} onClose={handleFormDialog}>
                 <DialogTitle>Add New Account</DialogTitle>
                 <DialogContent>
@@ -162,12 +153,11 @@ export function SimpleFormDialog(props: SimpleFormDialog) {
             </Dialog >
             <SnackbarComponent
                 open={openSnackbar}
-                autoHideDuration={6000}
+                autoHideDuration={5000}
                 onClose={handleCloseSnackbar}
-                message={"Email is already exists!"}
-                action={action}
+                message={message.current}
             />
-        </>
+        </div>
     )
 }
 
@@ -197,7 +187,6 @@ export default function SimpleDialogDemo() {
                 selectedValue={selectedValue}
                 onClose={handleClose}
             />
-            {/* <SimpleFormDialog></SimpleFormDialog> */}
         </div>
     )
 }
