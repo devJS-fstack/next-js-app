@@ -1,20 +1,20 @@
 import {
     useState,
-    useRef
+    useRef,
+    Fragment
 } from 'react'
 
 import {
     Button, Avatar, List, ListItem, ListItemText, DialogTitle, Dialog,
-    Typography, ListItemAvatar, DialogContent, DialogActions, DialogContentText, TextField
+    Typography, ListItemAvatar, DialogContent, DialogActions, DialogContentText, TextField, IconButton
 } from '@mui/material'
-
+import CloseIcon from '@mui/icons-material/Close'
 import PersonIcon from '@mui/icons-material/Person';
 import AddIcon from '@mui/icons-material/Add'
 import { blue } from '@mui/material/colors';
+import SnackbarComponent from '../material/snackbar'
 
 const emails = ['user_01@gmail.com', 'user_02@gmail.com', 'user_03@gmail.com']
-
-
 
 export interface SimpleDialogProps {
     open: boolean;
@@ -43,6 +43,8 @@ export function SimpleDialog(props: SimpleDialogProps) {
             setOpenFormDialog(true)
         }
     }
+
+
 
     return (
         <>
@@ -77,6 +79,7 @@ export function SimpleDialog(props: SimpleDialogProps) {
                 openFormDialog={openFormDialog}
                 handleFormDialog={handleCloseFormDialog}
             />
+
         </>
     )
 }
@@ -85,10 +88,16 @@ export function SimpleDialog(props: SimpleDialogProps) {
 export function SimpleFormDialog(props: SimpleFormDialog) {
     const { openFormDialog, handleFormDialog } = props
     const [email, setEmail] = useState('')
+    const [openSnackbar, setOpenSnackbar] = useState(false)
     const handleAddAccount = (value: string) => {
-        emails.push(value)
-        handleFormDialog(value)
-        setEmail('')
+        const isExist = emails.includes(value)
+        if (!isExist) {
+            emails.push(value)
+            handleFormDialog(value)
+            setEmail('')
+        } else {
+            setOpenSnackbar(true)
+        }
     }
 
 
@@ -96,36 +105,69 @@ export function SimpleFormDialog(props: SimpleFormDialog) {
         setEmail(value)
     }
 
+    const handleOpenSnackbar = () => {
+        setOpenSnackbar(true)
+    }
+
+    const handleCloseSnackbar = () => {
+        setOpenSnackbar(false)
+    }
+
+    const action = (
+        <Fragment>
+            <Button color="secondary" size="small" onClick={handleCloseSnackbar}>
+                UNDO
+            </Button>
+            <IconButton
+                size="small"
+                aria-label="close"
+                color="inherit"
+                onClick={handleCloseSnackbar}
+            >
+                <CloseIcon fontSize="small" />
+            </IconButton>
+        </Fragment>
+    );
+
     return (
-        <Dialog open={openFormDialog} onClose={handleFormDialog}>
-            <DialogTitle>Add New Account</DialogTitle>
-            <DialogContent>
-                <DialogContentText>
-                    To subscribe this website, please enter your email address here. We will send updates occasionally
-                </DialogContentText>
-                <TextField
-                    autoFocus
-                    margin="dense"
-                    id="name"
-                    label="Email Address"
-                    type="email"
-                    fullWidth
-                    variant="standard"
-                    value={email}
-                    onInput={(e: any) => {
-                        handleInput(e.target.value);
-                    }}
-                // name="email_value"
-                >
-                </TextField>
-            </DialogContent>
-            <DialogActions>
-                <Button onClick={handleFormDialog}>Cancel</Button>
-                <Button onClick={() => {
-                    handleAddAccount(email)
-                }}>Add</Button>
-            </DialogActions>
-        </Dialog >
+        <>
+            <Dialog open={openFormDialog} onClose={handleFormDialog}>
+                <DialogTitle>Add New Account</DialogTitle>
+                <DialogContent>
+                    <DialogContentText>
+                        To subscribe this website, please enter your email address here. Email can't duplicate
+                    </DialogContentText>
+                    <TextField
+                        autoFocus
+                        margin="dense"
+                        id="name"
+                        label="Email Address"
+                        type="email"
+                        fullWidth
+                        variant="standard"
+                        value={email}
+                        onInput={(e: any) => {
+                            handleInput(e.target.value);
+                        }}
+                    // name="email_value"
+                    >
+                    </TextField>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={handleFormDialog}>Cancel</Button>
+                    <Button onClick={() => {
+                        handleAddAccount(email)
+                    }}>Add</Button>
+                </DialogActions>
+            </Dialog >
+            <SnackbarComponent
+                open={openSnackbar}
+                autoHideDuration={6000}
+                onClose={handleCloseSnackbar}
+                message={"Email is already exists!"}
+                action={action}
+            />
+        </>
     )
 }
 
