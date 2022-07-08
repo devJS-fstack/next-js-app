@@ -31,7 +31,6 @@ export default function App() {
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
-
             <SimpleDialogProps></SimpleDialogProps>
         </Fragment >
     )
