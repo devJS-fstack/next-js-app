@@ -25,6 +25,7 @@ export interface SimpleDialogProps {
 export interface SimpleFormDialog {
     openFormDialog: boolean;
     handleFormDialog: any;
+    selectedValue: string;
 }
 
 export function SimpleDialog(props: SimpleDialogProps) {
@@ -35,6 +36,7 @@ export function SimpleDialog(props: SimpleDialogProps) {
     }
     const handleCloseFormDialog = (value: string) => {
         setOpenFormDialog(false)
+        onClose(value === undefined ? selectedValue : value)
     }
     const handleListItemClick = (value: string) => {
         if (value == "addAccount") {
@@ -44,9 +46,6 @@ export function SimpleDialog(props: SimpleDialogProps) {
             onClose(value)
         }
     }
-
-
-
     return (
         <>
             <Dialog
@@ -79,6 +78,7 @@ export function SimpleDialog(props: SimpleDialogProps) {
             <SimpleFormDialog
                 openFormDialog={openFormDialog}
                 handleFormDialog={handleCloseFormDialog}
+                selectedValue={selectedValue}
             />
 
         </>
@@ -87,7 +87,7 @@ export function SimpleDialog(props: SimpleDialogProps) {
 
 
 export function SimpleFormDialog(props: SimpleFormDialog) {
-    const { openFormDialog, handleFormDialog } = props
+    const { openFormDialog, handleFormDialog, selectedValue } = props
     let message = useRef("Email is already exists!")
     const [email, setEmail] = useState('')
     const [openSnackbar, setOpenSnackbar] = useState(false)
@@ -122,7 +122,7 @@ export function SimpleFormDialog(props: SimpleFormDialog) {
 
     return (
         <div>
-            <Dialog open={openFormDialog} onClose={handleFormDialog}>
+            <Dialog open={openFormDialog} onClose={() => handleFormDialog(selectedValue)}>
                 <DialogTitle>Add New Account</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -145,7 +145,7 @@ export function SimpleFormDialog(props: SimpleFormDialog) {
                     </TextField>
                 </DialogContent>
                 <DialogActions>
-                    <Button onClick={handleFormDialog}>Cancel</Button>
+                    <Button onClick={() => handleFormDialog(selectedValue)}>Cancel</Button>
                     <Button onClick={() => {
                         handleAddAccount(email)
                     }}>Add</Button>
