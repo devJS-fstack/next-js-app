@@ -4,6 +4,7 @@ import {
     Backdrop, Button, CircularProgress
 } from '@mui/material'
 import SimpleDialogProps from '../components/material/dialog'
+import DialSimple from '../components/material/dial'
 
 export default function App() {
     const [open, setOpen] = useState(false)
@@ -32,6 +33,8 @@ export default function App() {
                 <CircularProgress color="inherit" />
             </Backdrop>
             <SimpleDialogProps></SimpleDialogProps>
+            <DialSimple
+            ></DialSimple>
         </Fragment >
     )
 }
