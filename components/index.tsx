@@ -6,6 +6,7 @@ import {
 import SimpleDialogProps from '../components/material/dialog'
 import DialSimple from '../components/material/dial'
 
+
 export default function App() {
     const [open, setOpen] = useState(false)
     const handleClose = () => {

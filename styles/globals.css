@@ -1,3 +1,9 @@
+.dial-simple button:nth-child(1) {
+    --tw-bg-opacity: 1;
+    /* background-color: rgb(79 70 229/var(--tw-bg-opacity)); */
+    background-color: #1976d2;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
