@@ -17,25 +17,7 @@ export default function App() {
     }
     return (
         <Fragment>
-            <Button
-                variant="contained" sx={{
-                    margin: "20px 0 0 0",
-                    backgroundColor: "rgb(14 165 233/1)!important"
-                }}
-                color="success"
-                onClick={handlerToggleBackdrop}
-            >Click me</Button>
 
-            <Backdrop
-                sx={{ color: "rgb(31 41 55/1)", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-                open={open}
-                onClick={handleClose}
-            >
-                <CircularProgress color="inherit" />
-            </Backdrop>
-            <SimpleDialogProps></SimpleDialogProps>
-            <DialSimple
-            ></DialSimple>
         </Fragment >
     )
 }
