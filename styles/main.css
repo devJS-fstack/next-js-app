@@ -175,3 +175,72 @@
     object-fit: contain;
     height: 42px;
 }
+
+.box-work-1 {
+    order: 3;
+}
+
+.main_grid .box-2h {
+    grid-row: span 2;
+}
+
+.content-work {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    align-items: flex-end;
+    padding: 16px;
+}
+
+.content-work img.bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+
+.button-custom {
+    display: inline-flex;
+    color: #0d1117;
+    padding: 10px 20px;
+    margin-top: 15px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow .2s ease-out 0s;
+    align-items: center;
+    justify-content: center;
+}
+
+.box .button-custom {
+    flex: none;
+    height: 36px;
+    border-radius: 18px;
+    border: none;
+    background: #fff;
+    color: #0d1117;
+    padding: 10px;
+    transition: box-shadow .2s ease-out 0s;
+}
+
+.button-custom p {
+    font-size: 14px;
+}
+
+.button-custom p {
+    margin: 0;
+}
+
+.content-work .button-custom p {
+    margin-right: 4px;
+}
+
+.button-custom:hover {
+    cursor: pointer;
+    transition: box-shadow .2s ease-out 0s;
+    box-shadow: #fff 0 0 0 1px, rgb(255 255 255/.5)0 0 0 6px;
+    color: #0d1117;
+}

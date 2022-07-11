@@ -17,6 +17,10 @@
         grid-template-rows: repeat(6, 280px);
         grid-template-columns: auto;
     }
+
+    .main_grid .box-work-1.box-2h {
+        min-height: 600px;
+    }
 }
 
 @media (max-width: 600px) {
