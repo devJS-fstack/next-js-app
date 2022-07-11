@@ -41,7 +41,7 @@ export default function Header() {
                 <title>My Fullstack Blog</title>
                 <link rel="icon" href="man-working.svg" />
             </Head>
-            <Disclosure as="nav" className="bg-custom">
+            <Disclosure as="nav" className="bg-custom pt-8">
                 {({ open }: any) => (
                     <>
                         <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -72,8 +72,8 @@ export default function Header() {
 
                                     </div>
                                 </div>
-                                <div className="hidden sm:block sm:ml-6">
-                                    <div className="flex space-x-4">
+                                <div className="hidden sm:block sm:ml-6 bg-nav">
+                                    <div className="flex space-x-4 h-10 p-1">
                                         {navigation.map((item, index) => (
                                             <Link href={item.href} key={item.id}>
                                                 <a
@@ -81,8 +81,8 @@ export default function Header() {
                                                     href={item.href}
                                                     onClick={() => handleSwitchPage(index)}
                                                     className={classNames(
-                                                        item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
-                                                        'px-3 py-2 rounded-md text-sm font-medium'
+                                                        item.current ? 'bg-white text-zinc-900 rounded-2xl' : 'text-zinc-900 hover:text-gray-400 ',
+                                                        'px-3 pt-1 text-sm font-medium'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
@@ -93,13 +93,7 @@ export default function Header() {
                                     </div>
                                 </div>
                                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-                                    <button
-                                        type="button"
-                                        className="bg-gray-800 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
-                                    >
-                                        <span className="sr-only">View notifications</span>
-                                        <BellIcon className="h-6 w-6" aria-hidden="true" />
-                                    </button>
+
 
                                     {/* Profile dropdown */}
                                     <Menu as="div" className="ml-3 relative">

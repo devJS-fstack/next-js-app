@@ -2,6 +2,11 @@
     background: #f7f2f2;
 }
 
+.bg-nav {
+    background: rgba(0, 0, 0, 4%);
+    border-radius: 23px;
+}
+
 @media (max-width:640px) {
     .flex-custom {
         flex: 1 1 0%;
