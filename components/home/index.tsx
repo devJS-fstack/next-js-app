@@ -4,7 +4,7 @@ import BoxMap from './box/box_map'
 import BoxVertical from './box/box_vertical'
 import BoxTheme from './box/box_theme'
 import BoxLinkedIn from './box/box_linkedin'
-
+import BoxTool from './box/box_tool'
 
 
 export default function Home() {
@@ -17,6 +17,7 @@ export default function Home() {
                     <BoxVertical></BoxVertical>
                     <BoxTheme></BoxTheme>
                     <BoxLinkedIn></BoxLinkedIn>
+                    <BoxTool></BoxTool>
                 </div>
             </div>
         </main>

@@ -576,3 +576,7 @@
     left: 16px;
     bottom: 16px;
 }
+
+.box-work-2 {
+    order: 6;
+}

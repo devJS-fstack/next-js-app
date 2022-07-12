@@ -1,9 +1,10 @@
-export default function Vertical() {
+export default function Vertical(props: any) {
+    const { pathImg, nameBtn } = props
     return (
         <div className="content-work">
-            <img className="bg" src="images/astronaut-with-vr-helmet.jpg" />
+            <img className="bg" src={pathImg} />
             <a className="button-custom">
-                <p>Project</p>
+                <p>{nameBtn}</p>
                 <svg id="Arrow.7" xmlns="http://www.w3.org/2000/svg" width="18.256" height="18.256" viewBox="0 0 18.256 18.256" style={{ transition: "0.3s" }}>
                     <g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
                         <path id="Path_10" data-name="Path 10" d="M14.581,7.05,7.05,14.581" transform="translate(-7.05 -7.012)" fill="none" stroke="#0D1117" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path>
