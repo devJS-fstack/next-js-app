@@ -56,6 +56,20 @@
     position: relative;
 }
 
+.box-linkedin .content-social {
+    background: #6886c5;
+}
+
+.content-social {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+    position: relative;
+}
+
 .main_grid img {
     object-fit: cover;
     width: 100%;
@@ -551,4 +565,14 @@
 
 .dark a {
     color: #f0f2f8 !important;
+}
+
+.box-linkedin {
+    order: 5;
+}
+
+.content-social .button-custom {
+    position: absolute;
+    left: 16px;
+    bottom: 16px;
 }

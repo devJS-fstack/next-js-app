@@ -3,7 +3,7 @@ import BoxIntroduce from './box/box_introduce'
 import BoxMap from './box/box_map'
 import BoxVertical from './box/box_vertical'
 import BoxTheme from './box/box_theme'
-
+import BoxLinkedIn from './box/box_linkedin'
 
 
 
@@ -15,8 +15,8 @@ export default function Home() {
                     <BoxIntroduce></BoxIntroduce>
                     <BoxMap></BoxMap>
                     <BoxVertical></BoxVertical>
-                    <BoxTheme
-                    ></BoxTheme>
+                    <BoxTheme></BoxTheme>
+                    <BoxLinkedIn></BoxLinkedIn>
                 </div>
             </div>
         </main>

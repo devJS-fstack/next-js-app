@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeContext.Provider value={[theme, handleTheme]}>
       <div className={theme}>
         <Header></Header>
-        <h1 style={{ display: 'none' }}>Dev Nguyen Fullstack Blog</h1>
+        <h1 style={{ display: 'none' }}>Dev Nguyen Vercel Fullstack Blog</h1>
         <Component {...pageProps} />
       </div >
     </ThemeContext.Provider>
