@@ -1,3 +1,8 @@
+function openInNewTab(url: string, event: any) {
+    event.preventDefault();
+    window.open(url, '_blank')?.focus()
+}
+
 export default function LinkedIn() {
     return (
         <div className="content-social">
@@ -7,7 +12,7 @@ export default function LinkedIn() {
                     fill="white"
                 ></path>
             </svg>
-            <a href="" className="button-custom">
+            <a href="https://www.linkedin.com/in/devnguyen-js" onClick={(e) => { openInNewTab("https://www.linkedin.com/in/devnguyen-js", e) }} className="button-custom">
                 <svg id="Arrow.7" xmlns="http://www.w3.org/2000/svg" width="18.256" height="18.256" viewBox="0 0 18.256 18.256" style={{ transition: "0.3s" }}>
                     <g id="Group_7" data-name="Group 7" transform="translate(5.363 5.325)">
                         <path id="Path_10" data-name="Path 10" d="M14.581,7.05,7.05,14.581" transform="translate(-7.05 -7.012)" fill="none" stroke="#0D1117" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5"></path>
