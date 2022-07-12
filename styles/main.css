@@ -548,3 +548,7 @@
 .dark .button-toggle svg g path {
     stroke: #f0f2f8;
 }
+
+.dark a {
+    color: #f0f2f8 !important;
+}

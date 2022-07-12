@@ -1,10 +1,12 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useEffect, useState } from 'react'
+import { Fragment, useEffect, useState, useContext } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { PaperClipIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import Head from 'next/head'
+import { ThemeContext } from '../../pages/_app'
+import { classNames } from '../../utils/helper'
 
 type Nav = {
     id: number;
@@ -21,12 +23,18 @@ const navigation: Nav[] = [
     { id: 5, name: 'Sign Up', href: 'signup', current: false },
 ]
 
-function classNames(...classes: any) {
-    return classes.filter(Boolean).join(' ')
+function checkActiveNavbar(isActive: boolean, theme: any) {
+    if (isActive && theme === 'dark') {
+        return 'bg-slate-800 text-zinc-900 rounded-2xl'
+    } else if (isActive && theme === '') {
+        return 'bg-white text-zinc-900 rounded-2xl'
+    }
+    return 'text-zinc-900 hover:text-gray-400'
 }
 
 export default function Header() {
     const [state, setState] = useState(navigation)
+    const [theme, handleTheme] = useContext(ThemeContext)
     const handleSwitchPage = (index: number) => {
         const stateNew = state.map((item, i) => {
             if (index === i) {
@@ -81,7 +89,7 @@ export default function Header() {
                                                     href={item.href}
                                                     onClick={() => handleSwitchPage(index)}
                                                     className={classNames(
-                                                        item.current ? 'bg-white text-zinc-900 rounded-2xl' : 'text-zinc-900 hover:text-gray-400 ',
+                                                        checkActiveNavbar(item.current, theme),
                                                         'px-3 pt-1 text-sm font-medium'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
