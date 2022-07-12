@@ -49,4 +49,8 @@
     .content-about {
         padding: 32px;
     }
+
+    .dark .button-toggle p {
+        display: none
+    }
 }
