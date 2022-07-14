@@ -707,3 +707,9 @@
 .box-social .content-social {
     background: #6ed2b7;
 }
+
+.inspired {
+    color: #ec7b5c;
+    text-decoration: none;
+    transition: box-shadow .2s ease-out 0s;
+}

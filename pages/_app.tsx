@@ -3,6 +3,7 @@ import type { AppProps } from 'next/app'
 import '../styles/main.css'
 import '../styles/responsive.css'
 import Header from '../components/header'
+import Footer from '../components/footer'
 import { useState, createContext, useCallback } from 'react'
 export const ThemeContext = createContext(['', () => { }])
 
