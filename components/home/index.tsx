@@ -8,6 +8,7 @@ import BoxTool from './box/box_tool'
 import BoxText from './box/box_text'
 import BoxService from './box/box_service'
 import BoxSocial from './box/box_social'
+import BoxTalk from './box/box_talk'
 
 export default function Home() {
     return (
@@ -23,6 +24,7 @@ export default function Home() {
                     <BoxText></BoxText>
                     <BoxService></BoxService>
                     <BoxSocial></BoxSocial>
+                    <BoxTalk></BoxTalk>
                 </div>
             </div>
         </main>
