@@ -56,6 +56,12 @@
     position: relative;
 }
 
+.content-about .about-title {
+    font-family: 'Source Serif Pro', serif;
+    font-size: 16px;
+    font-weight: 500;
+}
+
 .box-linkedin .content-social {
     background: #6886c5;
 }
@@ -579,4 +585,125 @@
 
 .box-work-2 {
     order: 6;
+}
+
+.box-tool .button-custom {
+    position: absolute;
+    top: 4px;
+    right: 26px;
+}
+
+.box-text {
+    background: #fff;
+    padding: 40px 44px;
+}
+
+.box-text-1 {
+    order: 7;
+}
+
+.box-text .content-text {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.box-text .content-text>div {
+    flex: 0 0 100%;
+}
+
+.box-text .content-cta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.box-text h2 {
+    font-size: 24px;
+    line-height: 32px;
+    font-family: 'Source Serif Pro', serif;
+    font-weight: 900;
+    color: #0d1117;
+    margin-bottom: 4px;
+}
+
+.box-text .content-title p {
+    font-size: 16x;
+    font-family: 'Source Serif Pro', serif;
+    line-height: 26px;
+    letter-spacing: .5px;
+    font-weight: 500;
+    color: #0d1117;
+    margin: 0;
+}
+
+.box-text .button svg {
+    margin-right: 6px;
+}
+
+.button-custom p {
+    font-size: 14px;
+    margin: 0;
+}
+
+.box-text .content-cta .date {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: .25px;
+    font-weight: 400;
+    color: #8a949e;
+    margin: 0;
+}
+
+.box-text .button-custom,
+.box-project .button-custom {
+    padding: 10px 12px !important;
+    margin: 0;
+    box-shadow: #f0f2f8 0 0 0 2px;
+    transition: all .3s ease-out 0s;
+    will-change: box-shadow, transform;
+}
+
+.button-custom:before {
+    content: ' ';
+    width: 100%;
+    height: calc(100% + 0.2rem);
+    background: #000;
+    z-index: -1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    transition: all .3s cubic-bezier(.28, .44, .49, 1);
+}
+
+.button-custom:hover:before {
+    transform: translateY(0%);
+}
+
+.box-text.box .button-custom:hover,
+.box-project .button-custom:hover {
+    color: #fff;
+}
+
+.box-text.box .button-custom:hover svg g path,
+.box-project .button-custom:hover svg g path {
+    stroke: #fff;
+}
+
+.box-work-3 {
+    order: 9
+}
+
+.box-social {
+    order: 8
+}
+
+.box-social .content-social>svg {
+    height: 75px;
+}
+
+.box-social .content-social {
+    background: #6ed2b7;
 }
