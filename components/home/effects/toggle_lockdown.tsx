@@ -11,8 +11,8 @@ function ToggleLockdown() {
     return (
         <>
             <div className={classNames("content-about", lockdown ? "lockdown" : '')}>
-                <img className="about-me__01" src="images/3d-cartoon-teenage-boy.jpg" />
-                <img className="about-me__02" src="images/3d-cartoon-teenage-boy_02.jpg" />
+                <img className="about-me__01" src="images/3d-cartoon-teenage-boy-removebg-preview.png" />
+                <img className="about-me__02" src="images/3d-cartoon-teenage-boy_02-removebg-preview.png" />
                 <p className="about-title">
                     I’m Dev, a web developer from VietNam. I'm interested in Code, Design, Business, Startups and Books.
                 </p>

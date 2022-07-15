@@ -7,7 +7,7 @@ function MapToggle() {
             <img className="img-map dark" src="images/map-screen_dark.png" />
             <div className="avatar-box">
                 <div className="avatar-circle">
-                    <img className="img-avatar" src="images/avatar-3d_map.jpg" />
+                    <img className="img-avatar" src="images/memoji-1.png" />
                 </div>
             </div>
         </div>

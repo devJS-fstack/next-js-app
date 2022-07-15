@@ -713,3 +713,44 @@
     text-decoration: none;
     transition: box-shadow .2s ease-out 0s;
 }
+
+.box-text-2 {
+    order: 10;
+}
+
+.wrapper-svg {
+    width: 36px;
+    height: 36px;
+    border-radius: 18px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    position: absolute;
+    right: 0px;
+}
+
+.img-service.dark {
+    display: none;
+}
+
+.dark .img-map.dark,
+.dark .img-service.dark {
+    display: block;
+}
+
+.dark .img-map.light,
+.dark .img-service.light {
+    display: none;
+}
+
+.dark .box .button-custom {
+    background: #0d1117;
+    border: 2px solid #30363d;
+    padding: 8px;
+}
+
+.dark .box .button-custom g path {
+    stroke: #f0f2f8;
+}
