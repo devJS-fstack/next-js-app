@@ -754,3 +754,7 @@
 .dark .box .button-custom g path {
     stroke: #f0f2f8;
 }
+
+.text-custom {
+    color: #0d1117;
+}

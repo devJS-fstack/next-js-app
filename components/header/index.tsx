@@ -33,10 +33,19 @@ function checkActiveNavbar(isActive: boolean, theme: any) {
     return 'text-zinc-900 hover:text-gray-400'
 }
 
+function checkActiveNavMobile(isActive: boolean, theme: any) {
+    if (isActive && theme === 'dark') {
+        return 'bg-slate-800 text-zinc-900'
+    } else if (isActive && theme === '') {
+        return 'bg-white text-zinc-900'
+    }
+    return 'text-zinc-900 hover:text-gray-400'
+}
+
 
 export default function Header() {
     const [nav, setNav] = useState(navigation)
-    const [theme, handleTheme] = useContext(ThemeContext)
+    const [theme, handleTheme]: any = useContext(ThemeContext)
     const handleSwitchPage = (index: number) => {
         const stateNew: any = navigation.map((item, i) => {
             if (index === i) {
@@ -57,7 +66,6 @@ export default function Header() {
         })
         setNav(navNew)
     }, [route.current])
-    console.log('re-render')
     return (
         <>
             <Head>
@@ -190,7 +198,7 @@ export default function Header() {
                                             as="a"
                                             href={item.href}
                                             className={classNames(
-                                                item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
+                                                checkActiveNavMobile(item.current, theme),
                                                 'block px-3 py-2 rounded-md text-base font-medium'
                                             )}
                                             aria-current={item.current ? 'page' : undefined}
