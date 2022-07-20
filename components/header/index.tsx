@@ -1,10 +1,11 @@
 /* This example requires Tailwind CSS v2.0+ */
-import { Fragment, useEffect, useState, useContext } from 'react'
+import { Fragment, useEffect, useState, useContext, useRef } from 'react'
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/react/outline'
 import { PaperClipIcon } from '@heroicons/react/solid'
 import Link from 'next/link'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { ThemeContext } from '../../pages/_app'
 import { classNames } from '../../utils/helper'
 
@@ -17,10 +18,10 @@ type Nav = {
 
 const navigation: Nav[] = [
     { id: 1, name: 'Homepage', href: '/', current: true },
-    { id: 2, name: 'Service', href: 'service', current: false },
-    { id: 3, name: 'About Me', href: 'about', current: false },
-    { id: 4, name: 'Sign In', href: 'signin', current: false },
-    { id: 5, name: 'Sign Up', href: 'signup', current: false },
+    { id: 2, name: 'Service', href: '/service', current: false },
+    { id: 3, name: 'About Me', href: '/about', current: false },
+    { id: 4, name: 'Sign In', href: '/signin', current: false },
+    { id: 5, name: 'Sign Up', href: '/signup', current: false },
 ]
 
 function checkActiveNavbar(isActive: boolean, theme: any) {
@@ -32,17 +33,31 @@ function checkActiveNavbar(isActive: boolean, theme: any) {
     return 'text-zinc-900 hover:text-gray-400'
 }
 
+
 export default function Header() {
-    const [state, setState] = useState(navigation)
+    const [nav, setNav] = useState(navigation)
     const [theme, handleTheme] = useContext(ThemeContext)
     const handleSwitchPage = (index: number) => {
-        const stateNew = state.map((item, i) => {
+        const stateNew: any = navigation.map((item, i) => {
             if (index === i) {
                 item.current = true
             } else
                 item.current = false
+            return item
         })
+        setNav(stateNew)
     }
+    const router = useRouter();
+    const route = useRef(router.route);
+    useEffect(() => {
+        const navNew: any = navigation.map(item => {
+            if (route.current === item.href) item.current = true
+            else item.current = false
+            return item
+        })
+        setNav(navNew)
+    }, [route.current])
+    console.log('re-render')
     return (
         <>
             <Head>
@@ -86,7 +101,7 @@ export default function Header() {
                                 </div>
                                 <div className="hidden sm:block sm:ml-6 bg-nav">
                                     <div className="flex space-x-4 h-10 p-1">
-                                        {navigation.map((item, index) => (
+                                        {nav.map((item, index) => (
                                             <Link href={item.href} key={item.id}>
                                                 <a
                                                     key={item.id}
@@ -94,7 +109,7 @@ export default function Header() {
                                                     onClick={() => handleSwitchPage(index)}
                                                     className={classNames(
                                                         checkActiveNavbar(item.current, theme),
-                                                        'px-3 pt-1 text-sm font-medium'
+                                                        'px-3 pt-1 text-sm font-medium', item.current || 'false'
                                                     )}
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
