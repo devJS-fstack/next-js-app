@@ -70,7 +70,7 @@ export class Vigenere implements BaseAlgorithm {
             const indexKey =
                 this.base.findIndex((baseStr) => baseStr === strKey) + 1;
             let indexStr = this.BASE_STORE[indexKey].findIndex(
-                (baseStr: string) => baseStr === str,
+                (baseStr: string) => baseStr === str
             );
 
             if (iKey === keyArr.length - 1) {
@@ -83,7 +83,6 @@ export class Vigenere implements BaseAlgorithm {
                 indexStr = 1;
             }
 
-            console.log({ indexKey, indexStr, str, strKey });
             const newStr = this.BASE_STORE[0][indexStr];
             result.push(isUpper ? newStr : newStr.toLowerCase());
         }

@@ -1,6 +1,7 @@
 import { Caesar } from "./caesar";
 import { Vigenere } from "./vigenere";
 import { PlayFair } from "./playFair";
+import { RailFence } from "./railFence";
 import { toNumber } from "lodash";
 
 export const algorithms = ["Rail Fence", "Play Fair", "Caesar", "Vigenere"];
@@ -19,6 +20,7 @@ export class Algorithm {
         private caesar = new Caesar(),
         private vignere = new Vigenere(),
         private playFair = new PlayFair(),
+        private railFence = new RailFence()
     ) {}
 
     init() {
@@ -34,6 +36,8 @@ export class Algorithm {
                 return this.vignere.encrypt(input, key);
             case "Play Fair":
                 return this.playFair.encrypt(input, key);
+            case "Rail Fence":
+                return this.railFence.encrypt(input, toNumber(key));
             default:
                 return input;
         }
@@ -47,6 +51,8 @@ export class Algorithm {
                 return this.vignere.decrypt(input, key);
             case "Play Fair":
                 return this.playFair.decrypt(input, key);
+            case "Rail Fence":
+                return this.railFence.decrypt(input, toNumber(key));
             default:
                 return input;
         }
